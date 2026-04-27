@@ -32,79 +32,97 @@ const ProjectModal = ({ project, isOpen, onOpenChange }) => {
   if (!project) return null;
 
   const [activeImage, setActiveImage] = React.useState(project.image);
+  const [lightboxImage, setLightboxImage] = React.useState(null);
 
   React.useEffect(() => {
     setActiveImage(project.image);
   }, [project]);
 
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 gap-0 border-none shadow-2xl bg-background/98 backdrop-blur-xl">
-        {/* Modern Horizontal Header */}
-        <div className="relative border-b overflow-hidden">
-          {/* Subtle accent line at top */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-          
-          <div className="px-6 md:px-8 py-5 flex items-center justify-between gap-6">
-            {/* Left: Category + Title */}
-            <div className="flex items-center gap-4 min-w-0">
-              <div className="hidden sm:block w-[3px] h-10 bg-gradient-to-b from-primary to-violet-500 rounded-full shrink-0" />
-              <div className="min-w-0">
-                <div className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/70 mb-0.5">
-                  {project.category}
-                </div>
-                <DialogTitle className="text-xl md:text-2xl font-black tracking-tight leading-none truncate">
-                  {project.title.split(":")[0]}
-                </DialogTitle>
-              </div>
-            </div>
-
-            {/* Right: Role Badge */}
-            {project.role && (
-              <div className="shrink-0">
-                <span className="inline-flex items-center rounded-full border border-border bg-muted/40 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                  {project.role}
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <DialogDescription className="sr-only">{project.description}</DialogDescription>
-
-        <div className="p-6 md:p-8 space-y-8">
-          {/* Centered Gallery Section */}
-          <div className="flex flex-col items-center gap-6">
-            <div className="w-full relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-violet-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-700" />
-              <div className="relative aspect-video rounded-2xl overflow-hidden border shadow-2xl bg-zinc-950">
-                <img 
-                  src={activeImage} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover object-top transition-all duration-700 hover:scale-105"
-                />
-              </div>
-            </div>
+    <>
+      <Dialog open={isOpen} onOpenChange={onOpenChange}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 gap-0 border-none shadow-2xl bg-background/98 backdrop-blur-xl">
+          {/* Modern Horizontal Header */}
+          <div className="relative border-b overflow-hidden">
+            {/* Subtle accent line at top */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
             
-            {project.images && project.images.length > 1 && (
-              <div className="flex flex-wrap justify-center gap-3">
-                {project.images.map((img, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveImage(img)}
-                    className={cn(
-                      "w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:-translate-y-1",
-                      activeImage === img 
-                        ? "border-primary shadow-[0_0_15px_rgba(var(--primary),0.3)] scale-110" 
-                        : "border-border/50 opacity-40 hover:opacity-100 hover:border-primary/50"
-                    )}
-                  >
-                    <img src={img} className="w-full h-full object-cover" />
-                  </button>
-                ))}
+            <div className="px-6 md:px-8 pr-14 md:pr-16 py-5 flex items-center justify-between gap-6">
+              {/* Left: Category + Title */}
+              <div className="flex items-center gap-4 min-w-0">
+                <div className="hidden sm:block w-[3px] h-10 bg-gradient-to-b from-primary to-violet-500 rounded-full shrink-0" />
+                <div className="min-w-0">
+                  <div className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/70 mb-0.5">
+                    {project.category}
+                  </div>
+                  <DialogTitle className="text-xl md:text-2xl font-black tracking-tight leading-none truncate">
+                    {project.title.split(":")[0]}
+                  </DialogTitle>
+                </div>
               </div>
-            )}
+
+              {/* Right: Role Badge */}
+              {project.role && (
+                <div className="shrink-0">
+                  <span className="inline-flex items-center rounded-full border border-border bg-muted/40 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                    {project.role}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
+
+          <DialogDescription className="sr-only">{project.description}</DialogDescription>
+
+          {/* Custom Close Button for Main Modal */}
+          <button 
+            onClick={() => onOpenChange(false)}
+            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground/60 hover:text-foreground transition-all border border-border group"
+          >
+            <Icons.close className="size-4 group-hover:rotate-90 transition-transform duration-300" />
+          </button>
+
+          <div className="p-6 md:p-8 space-y-8">
+            {/* Centered Gallery Section */}
+            <div className="flex flex-col items-center gap-6">
+              <div className="w-full relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-violet-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-700" />
+                <div 
+                  className="relative aspect-video rounded-2xl overflow-hidden border shadow-2xl bg-zinc-950 cursor-zoom-in"
+                  onClick={() => setLightboxImage(activeImage)}
+                >
+                  <img 
+                    src={activeImage} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover object-top transition-all duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 text-white transform scale-90 group-hover:scale-100 transition-transform">
+                      <Icons.globe className="size-6" /> {/* Using globe as a search/zoom placeholder if Icons.zoom not exist */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {project.images && project.images.length > 1 && (
+                <div className="flex flex-wrap justify-center gap-3">
+                  {project.images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImage(img)}
+                      className={cn(
+                        "w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:-translate-y-1",
+                        activeImage === img 
+                          ? "border-primary shadow-[0_0_15px_rgba(var(--primary),0.3)] scale-110" 
+                          : "border-border/50 opacity-40 hover:opacity-100 hover:border-primary/50"
+                      )}
+                    >
+                      <img src={img} className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
           {/* Project Details */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
@@ -178,6 +196,26 @@ const ProjectModal = ({ project, isOpen, onOpenChange }) => {
         </div>
       </DialogContent>
     </Dialog>
+    <Dialog open={!!lightboxImage} onOpenChange={() => setLightboxImage(null)}>
+        <DialogContent className="max-w-[95vw] md:max-w-[90vw] h-fit p-1 border-none bg-zinc-950/90 backdrop-blur-2xl shadow-none overflow-hidden rounded-3xl">
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img 
+              src={lightboxImage} 
+              alt="Project detail" 
+              className="w-full h-auto max-h-[92vh] object-contain rounded-2xl select-none"
+              style={{ imageRendering: 'auto' }}
+            />
+            {/* Minimalist Close Button */}
+            <button 
+              onClick={() => setLightboxImage(null)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 group"
+            >
+              <Icons.close className="size-5 group-hover:rotate-90 transition-transform duration-300" />
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

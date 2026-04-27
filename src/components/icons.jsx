@@ -1,6 +1,7 @@
-import { GlobeIcon, MailIcon } from "lucide-react";
+import { GlobeIcon, MailIcon, XIcon } from "lucide-react";
 
 export const Icons = {
+  close: (props) => <XIcon {...props} />,
   globe: (props) => <GlobeIcon {...props} />,
   email: (props) => <MailIcon {...props} />,
   linkedin: (props) => (
@@ -12,7 +13,7 @@ export const Icons = {
       />
     </svg>
   ),
-  x: (props) => (
+  twitter: (props) => (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
       <title>X</title>
       <path
