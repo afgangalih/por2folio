@@ -7,40 +7,24 @@ export const DATA = {
   url: "https://github.com/afgangalih",
   location: "Malang, Indonesia",
   locationLink: "https://www.google.com/maps/place/Malang,+East+Java",
-  description:
-    "Software Engineer & AI Enthusiast. I love building things and solving problems through technology.",
-  summary:
-    "I am a **passionate Software Engineer and AI Enthusiast** currently pursuing my degree in **Business Information Systems at Politeknik Negeri Malang**. With a unique background in **Design and Visual Communication**, I specialize in bridging the gap between **aesthetics and functionality**. I have extensive experience in building high-performance **web and mobile applications**, ranging from **expert systems** to **dynamic personal branding platforms**. My technical toolkit includes modern frameworks like **React, Next.js, and Laravel**, alongside a deep foundation in **Python** for data science and AI development.",
+  description: {
+    en: "Software Engineer & AI Enthusiast. I bridge the gap between aesthetics and high-performance technology.",
+    id: "Software Engineer & AI Enthusiast. Saya menjembatani estetika dan teknologi berperforma tinggi.",
+  },
+  summary: {
+    en: "I am a **passionate Software Engineer and AI Enthusiast** currently pursuing my degree in **Business Information Systems at Politeknik Negeri Malang**. With a unique background in **Design and Visual Communication**, I specialize in bridging the gap between **aesthetics and functionality**. I have extensive experience in building high-performance **web and mobile applications**, ranging from **expert systems** to **dynamic personal branding platforms**. My technical toolkit includes modern frameworks like **React, Next.js, and Laravel**, alongside a deep foundation in **Python** for data science and AI development.",
+    id: "Saya adalah **Software Engineer dan AI Enthusiast** yang sedang menempuh pendidikan **Sistem Informasi Bisnis di Politeknik Negeri Malang**. Dengan latar belakang unik di bidang **Desain Komunikasi Visual**, saya ahli dalam menghubungkan **estetika dan fungsionalitas**. Saya memiliki pengalaman luas dalam membangun **aplikasi web dan mobile** berperforma tinggi, mulai dari **sistem pakar** hingga **platform personal branding dinamis**. Toolkit teknis saya mencakup framework modern seperti **React, Next.js, dan Laravel**, serta fondasi kuat di **Python** untuk data science dan pengembangan AI.",
+  },
   avatarUrl: "/assets/afgan1.png",
   skills: [
-    "React",
-    "Next.js",
-    "Laravel",
-    "Flutter",
-    "Node.js",
-    "Python",
-    "Tailwind CSS",
-    "TypeScript",
-    "SQL",
-    "Framer Motion",
-    "VSCode",
-    "Bootstrap",
-    "Github",
-    "Figma",
-    "Power BI",
-    "PHP",
-    "Supabase",
-    "Zustand",
-    "Firebase",
-    "Django",
-    "Dart",
-    "PostgreSQL",
-    "MySQL",
-    "Docker",
+    "React", "Next.js", "Laravel", "Flutter", "Node.js", "Python", "Tailwind CSS", 
+    "TypeScript", "SQL", "Framer Motion", "VSCode", "Bootstrap", "Github", 
+    "Figma", "Power BI", "PHP", "Supabase", "Zustand", "Firebase", "Django", 
+    "Dart", "PostgreSQL", "MySQL", "Docker",
   ],
   navbar: [
-    { href: "#hero", icon: HomeIcon, label: "Home" },
-    { href: "#projects", icon: NotebookIcon, label: "Projects" },
+    { href: "#hero", icon: HomeIcon, label: { en: "Home", id: "Beranda" } },
+    { href: "#projects", icon: NotebookIcon, label: { en: "Projects", id: "Proyek" } },
   ],
   contact: {
     email: "afganalmadinah2@gmail.com",
@@ -89,8 +73,10 @@ export const DATA = {
       logoUrl: "/assets/proyek/1.png",
       start: "2025",
       end: null,
-      description:
-        "Engineered a centralized web platform featuring 51 utility tools, seamlessly integrating advanced capabilities such as AI-powered background removal, OCR text extraction, and CAD to PDF rendering.",
+      description: {
+        en: "Engineered a centralized web platform featuring 51 utility tools, integrating AI background removal, OCR text extraction, and CAD rendering.",
+        id: "Membangun platform web terpusat dengan 51 alat utilitas, mengintegrasikan AI background removal, ekstraksi teks OCR, dan rendering CAD.",
+      },
     },
     {
       company: "E-Bimbingan Mobile",
@@ -101,8 +87,10 @@ export const DATA = {
       logoUrl: "/assets/proyek/proyek1.webp",
       start: "2025",
       end: "2025",
-      description:
-        "Developed and maintained the backend infrastructure for a mobile-based internship supervision application. Implemented a structured batch verification system and real-time monitoring features using Firebase, enabling seamless communication between students, lecturers, and administrators.",
+      description: {
+        en: "Developed backend infrastructure for internship supervision. Implemented structured batch verification and real-time monitoring using Firebase.",
+        id: "Mengembangkan infrastruktur backend untuk pengawasan magang. Mengimplementasikan verifikasi batch terstruktur dan pemantauan real-time menggunakan Firebase.",
+      },
     },
     {
       company: "Tracer Study Web",
@@ -113,15 +101,20 @@ export const DATA = {
       logoUrl: "/assets/proyek/proyek2.webp",
       start: "2025",
       end: "2025",
-      description:
-        "Conducted requirements analysis and designed the system architecture for a web-based alumni tracer study application. Defined data flow diagrams, created functional specifications for automated survey distribution, and collaborated with the development team to ensure the system aligned with institutional reporting standards.",
+      description: {
+        en: "Conducted requirements analysis and designed system architecture for alumni tracing. Defined data flows and functional specifications for automated surveys.",
+        id: "Melakukan analisis kebutuhan dan merancang arsitektur sistem untuk pelacakan alumni. Menentukan alur data dan spesifikasi fungsional untuk survei otomatis.",
+      },
     },
   ],
   education: [
     {
       school: "Politeknik Negeri Malang",
       href: "https://polinema.ac.id",
-      degree: "Applied Bachelor of Business Information Systems",
+      degree: {
+        en: "Applied Bachelor of Business Information Systems",
+        id: "Sarjana Terapan Sistem Informasi Bisnis",
+      },
       logoUrl: "/assets/polinema.png",
       start: "2023",
       end: "Present",
@@ -129,7 +122,10 @@ export const DATA = {
     {
       school: "SMK Plus Khoiriyah Hasyim",
       href: "https://sites.google.com/view/smktebuireng",
-      degree: "Design and Visual Communication",
+      degree: {
+        en: "Design and Visual Communication",
+        id: "Desain Komunikasi Visual",
+      },
       logoUrl: "/assets/smk.png",
       start: "2020",
       end: "2023",
@@ -142,15 +138,20 @@ export const DATA = {
       dates: "2025",
       active: true,
       category: "Mobile App",
-      role: "Backend Developer",
-      description:
-        "Aplikasi mobile untuk memudahkan proses bimbingan magang mahasiswa dengan sistem verifikasi batch otomatis dan pemantauan real-time.",
-      details: "Digitized and streamlined academic internship workflows by replacing manual documentation with a structured mobile ecosystem, enabling seamless real-time monitoring and communication between students, lecturers, and administrators.",
+      role: { en: "Backend Developer", id: "Pengembang Backend" },
+      description: {
+        en: "Mobile application for academic internship management with automated verification and real-time monitoring.",
+        id: "Aplikasi mobile untuk manajemen magang akademik dengan verifikasi otomatis dan pemantauan real-time.",
+      },
+      details: {
+        en: "Digitized internship workflows by replacing manual documentation with a structured mobile ecosystem, enabling seamless communication between students and lecturers.",
+        id: "Digitalisasi alur kerja magang dengan mengganti dokumentasi manual menjadi ekosistem mobile terstruktur, memungkinkan komunikasi lancar antara mahasiswa dan dosen.",
+      },
       features: [
-        "Automated Batch Verification System",
-        "Real-time Monitoring & Notifications",
-        "Structured Digital Documentation",
-        "MVVM Architecture & Rigorous Testing",
+        { en: "Automated Batch Verification", id: "Verifikasi Batch Otomatis" },
+        { en: "Real-time Notifications", id: "Notifikasi Real-time" },
+        { en: "Structured Digital Documentation", id: "Dokumentasi Digital Terstruktur" },
+        { en: "MVVM Architecture", id: "Arsitektur MVVM" },
       ],
       technologies: ["Flutter", "Dart", "Firebase", "Provider", "MVVM"],
       links: [
@@ -158,11 +159,6 @@ export const DATA = {
           type: "GitHub",
           href: "https://github.com/AlKhrisW/E-Bimbingan",
           icon: <Icons.github className="size-3" />,
-        },
-        {
-          type: "Demo",
-          href: "https://ebimbingan-demo.com",
-          icon: <Icons.globe className="size-3" />,
         },
       ],
       image: "/assets/proyek/proyek1.webp",
@@ -175,15 +171,20 @@ export const DATA = {
       dates: "2026",  
       active: true,
       category: "Web Development",
-      role: "Fullstack Developer",
-      description:
-        "Platform asesmen kesehatan jantung klinis dengan backend Laravel dan frontend React, menampilkan dashboard kesehatan interaktif.",
-      details: "Engineered a high-fidelity, modular clinical platform for heart health assessment, featuring a secure multi-step validated input system to process complex vital health parameters and interactive health dashboards.",
+      role: { en: "Fullstack Developer", id: "Pengembang Fullstack" },
+      description: {
+        en: "Clinical heart health assessment platform with interactive dashboards and multi-step validation.",
+        id: "Platform asesmen kesehatan jantung klinis dengan dashboard interaktif dan validasi multi-tahap.",
+      },
+      details: {
+        en: "Engineered a high-fidelity clinical platform for heart health assessment, featuring secure input processing and data visualizations with Recharts.",
+        id: "Membangun platform klinis untuk asesmen kesehatan jantung, menampilkan pemrosesan input aman dan visualisasi data dengan Recharts.",
+      },
       features: [
-        "Multi-step Validated Input System",
-        "Interactive Recharts Visualizations",
-        "Real-time Health Data Tracking",
-        "Luxury-minimalist Design Architecture",
+        { en: "Multi-step Validated Input", id: "Input Tervalidasi Multi-tahap" },
+        { en: "Interactive Visualizations", id: "Visualisasi Interaktif" },
+        { en: "Real-time Tracking", id: "Pelacakan Real-time" },
+        { en: "Minimalist UI Architecture", id: "Arsitektur UI Minimalis" },
       ],
       technologies: ["Laravel 11", "React.js", "Inertia.js", "Tailwind CSS", "Recharts"],
       links: [
@@ -203,15 +204,20 @@ export const DATA = {
       dates: "2026",
       active: true,
       category: "Web Development",
-      role: "Fullstack Developer",
-      description:
-        "Platform bio-link dinamis untuk mengelola profil personal dengan sistem preview instan dan antarmuka drag-and-drop.",
-      details: "Architected a high-performance personal branding platform that empowers users to build and manage highly customizable profile pages with a real-time, instantaneous preview system and drag-and-drop interfaces.",
+      role: { en: "Fullstack Developer", id: "Pengembang Fullstack" },
+      description: {
+        en: "Dynamic bio-link platform with instant preview and drag-and-drop customization.",
+        id: "Platform bio-link dinamis dengan preview instan dan kustomisasi drag-and-drop.",
+      },
+      details: {
+        en: "Architected a personal branding platform that empowers users to build customizable profile pages with a real-time preview system.",
+        id: "Merancang platform personal branding yang memungkinkan pengguna membangun halaman profil dengan sistem preview real-time.",
+      },
       features: [
-        "Drag-and-drop Content Reordering",
-        "Real-time Template Previews",
-        "Global State Management with Zustand",
-        "Fluid UI Transitions with Framer Motion",
+        { en: "Drag-and-drop Customization", id: "Kustomisasi Drag-and-drop" },
+        { en: "Real-time Previews", id: "Preview Real-time" },
+        { en: "Global State (Zustand)", id: "State Global (Zustand)" },
+        { en: "Fluid Motion UI", id: "UI Motion yang Halus" },
       ],
       technologies: ["Next.js", "Supabase", "Zustand", "Framer Motion", "@dnd-kit"],
       links: [
@@ -231,15 +237,20 @@ export const DATA = {
       dates: "2026",
       active: true,
       category: "Web Development",
-      role: "Fullstack Developer",
-      description:
-        "Direktori kafe lokal dengan fitur pencarian berbasis mood dan klasifikasi area menggunakan Next.js dan Supabase.",
-      details: "Engineered a location-based directory platform that optimizes the discovery of local establishments through a robust data management system and intelligent filtering logic based on atmospheric moods.",
+      role: { en: "Fullstack Developer", id: "Pengembang Fullstack" },
+      description: {
+        en: "Local cafe directory with mood-based searching and intelligent filtering.",
+        id: "Direktori kafe lokal dengan pencarian berbasis mood dan pemfilteran cerdas.",
+      },
+      details: {
+        en: "Optimizes the discovery of local establishments through a robust data management system and mood-based logic.",
+        id: "Mengoptimalkan penemuan kafe lokal melalui sistem manajemen data yang kuat dan logika berbasis mood.",
+      },
       features: [
-        "Mood-based Intelligent Filtering",
-        "Multi-tier Authentication",
-        "Administrative Control Center",
-        "Responsive Layouts & Radix UI",
+        { en: "Mood-based Filtering", id: "Pemfilteran Berbasis Mood" },
+        { en: "Multi-tier Auth", id: "Autentikasi Multi-level" },
+        { en: "Admin Control Center", id: "Pusat Kontrol Admin" },
+        { en: "Responsive Design", id: "Desain Responsif" },
       ],
       technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"],
       links: [
@@ -259,15 +270,20 @@ export const DATA = {
       dates: "2026",
       active: true,
       category: "Web Development",
-      role: "Fullstack Developer",
-      description:
-        "Sistem pakar diagnosis medis menggunakan Forward dan Backward Chaining dengan tingkat akurasi tinggi.",
-      details: "Architected a sophisticated diagnostic engine using advanced rule-based reasoning to simulate clinical decision-making, delivering traceable rule explanations and confidence-based assessments via RESTful API.",
+      role: { en: "Fullstack Developer", id: "Pengembang Fullstack" },
+      description: {
+        en: "Medical diagnostic engine using Forward and Backward Chaining with traceable rule explanations.",
+        id: "Mesin diagnosis medis menggunakan Forward dan Backward Chaining dengan penjelasan aturan yang transparan.",
+      },
+      details: {
+        en: "Architected a diagnostic engine that simulates clinical decision-making, delivering traceable rule assessments via RESTful API.",
+        id: "Merancang mesin diagnosis yang mensimulasikan pengambilan keputusan klinis, memberikan asesmen yang transparan melalui RESTful API.",
+      },
       features: [
-        "Forward & Backward Chaining Algorithms",
-        "Interpretable Inference Engine",
-        "Confidence Factor Scoring",
-        "RESTful API Integration",
+        { en: "Inference Engine (F&B Chaining)", id: "Inference Engine (F&B Chaining)" },
+        { en: "Traceable Explanations", id: "Penjelasan yang Transparan" },
+        { en: "Confidence Scoring", id: "Skor Keyakinan" },
+        { en: "RESTful API", id: "RESTful API" },
       ],
       technologies: ["Python", "Django", "Django REST Framework", "SQLite"],
       links: [
@@ -287,15 +303,20 @@ export const DATA = {
       dates: "2026",
       active: true,
       category: "Web Development",
-      role: "Frontend Developer",
-      description:
-        "Platform edukasi interaktif untuk mempelajari Sistem Pakar dan DSS dengan visualisasi engine inferensi.",
-      details: "Conceptualized and built an immersive educational interface designed to demystify complex computational architectures through step-by-step inference engine visualizations and dynamic comparisons.",
+      role: { en: "Frontend Developer", id: "Pengembang Frontend" },
+      description: {
+        en: "Interactive educational platform for Expert Systems and DSS with inference engine visualizations.",
+        id: "Platform edukasi interaktif untuk Sistem Pakar dan DSS dengan visualisasi engine inferensi.",
+      },
+      details: {
+        en: "Immersive interface designed to demystify complex computational architectures through step-by-step visualizations.",
+        id: "Antarmuka imersif yang dirancang untuk mempermudah pemahaman arsitektur komputasi kompleks melalui visualisasi langkah demi langkah.",
+      },
       features: [
-        "Inference Engine Visualizations",
-        "State-driven Comparative Tables",
-        "Interactive Learning Modules",
-        "Seamless UI Animations",
+        { en: "Inference Visualizations", id: "Visualisasi Inferensi" },
+        { en: "Comparative Modules", id: "Modul Komparatif" },
+        { en: "Dynamic Animations", id: "Animasi Dinamis" },
+        { en: "Seamless Navigation", id: "Navigasi Lancar" },
       ],
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       links: [
@@ -315,14 +336,19 @@ export const DATA = {
       dates: "2025",
       active: true,
       category: "Web Development",
-      role: "Backend Developer",
-      description:
-        "Aplikasi Website untuk melacak lulusan dan karir mereka pasca wisuda dengan dashboard visualisasi data.",
-      details: "Membangun backend yang andal untuk aplikasi tracer study yang memungkinkan pengumpulan data alumni secara efisien melalui manajemen database alumni dan pembuatan laporan dinamis.",
+      role: { en: "Backend Developer", id: "Pengembang Backend" },
+      description: {
+        en: "Web application for alumni career tracking with data visualization dashboards.",
+        id: "Aplikasi web untuk pelacakan karir alumni dengan dashboard visualisasi data.",
+      },
+      details: {
+        en: "Engineered a robust backend for alumni data collection and dynamic report generation.",
+        id: "Membangun backend yang kuat untuk pengumpulan data alumni dan pembuatan laporan dinamis.",
+      },
       features: [
-        "Kirim Survei Otomatis via Email",
-        "Data Visualization Dashboard",
-        "Visual Brand Identity Alignment",
+        { en: "Automated Email Surveys", id: "Survei Email Otomatis" },
+        { en: "Visualization Dashboard", id: "Dashboard Visualisasi" },
+        { en: "Brand Identity Alignment", id: "Penyelarasan Identitas Brand" },
       ],
       technologies: ["Figma", "Laravel", "MySQL", "Bootstrap", "ChartJS"],
       links: [
@@ -347,14 +373,19 @@ export const DATA = {
       dates: "2025",
       active: true,
       category: "Data Analyst",
-      role: "Data Analyst",
-      description:
-        "Analisis data penjualan parfum untuk mengidentifikasi tren pasar menggunakan Power BI dan SQL.",
-      details: "Proyek analisis data yang bertujuan untuk mengoptimalkan strategi penjualan parfum melalui pemahaman mendalam tentang tren pasar dan perilaku konsumen menggunakan Power BI.",
+      role: { en: "Data Analyst", id: "Analis Data" },
+      description: {
+        en: "Sales trend analysis for the perfume industry using Power BI and SQL.",
+        id: "Analisis tren penjualan untuk industri parfum menggunakan Power BI dan SQL.",
+      },
+      details: {
+        en: "Optimized sales strategies through deep market insights and consumer behavior analysis.",
+        id: "Optimasi strategi penjualan melalui wawasan pasar mendalam dan analisis perilaku konsumen.",
+      },
       features: [
-        "Data Cleaning & Transformation",
-        "Trend Analysis & Insights",
-        "Interactive Dashboards",
+        { en: "Data Transformation", id: "Transformasi Data" },
+        { en: "Trend Insights", id: "Wawasan Tren" },
+        { en: "Interactive Dashboards", id: "Dashboard Interaktif" },
       ],
       technologies: ["Power BI", "SQL"],
       links: [
@@ -374,14 +405,19 @@ export const DATA = {
       dates: "2025",
       active: true,
       category: "Data Analyst",
-      role: "Data Analyst",
-      description:
-        "Pengembangan model prediksi berbasis data untuk mendukung pengambilan keputusan.",
-      details: "Proyek ini berfokus pada penerapan analisis data untuk membangun model prediktif melalui tahapan data preprocessing hingga evaluasi performa model.",
+      role: { en: "Data Analyst", id: "Analis Data" },
+      description: {
+        en: "Predictive model development for data-driven decision support systems.",
+        id: "Pengembangan model prediktif untuk sistem pendukung keputusan berbasis data.",
+      },
+      details: {
+        en: "Focused on data preprocessing and performance evaluation to build reliable prediction models.",
+        id: "Fokus pada pra-pemrosesan data dan evaluasi performa untuk membangun model prediksi yang andal.",
+      },
       features: [
-        "Data Cleaning & Preprocessing",
-        "Exploratory Data Analysis (EDA)",
-        "Model Evaluation & Interpretation",
+        { en: "Data Preprocessing", id: "Pra-pemrosesan Data" },
+        { en: "Exploratory Data Analysis", id: "Analisis Data Eksploratif (EDA)" },
+        { en: "Model Interpretation", id: "Interpretasi Model" },
       ],
       technologies: ["Python", "Google Colab"],
       links: [
@@ -401,14 +437,19 @@ export const DATA = {
       dates: "2025",
       active: true,
       category: "Machine Learning",
-      role: "AI Developer",
-      description:
-        "Sistem pakar pendeteksi penyakit jantung menggunakan Python dengan tingkat akurasi 88%.",
-      details: "Mengembangkan sistem deteksi penyakit jantung berbasis aturan yang menganalisis indikator klinis dengan tingkat akurasi 88% pada dataset Kaggle.",
+      role: { en: "AI Developer", id: "Pengembang AI" },
+      description: {
+        en: "Rule-based system for heart disease detection with 88% accuracy on clinical datasets.",
+        id: "Sistem berbasis aturan untuk deteksi penyakit jantung dengan akurasi 88% pada dataset klinis.",
+      },
+      details: {
+        en: "Analyzes clinical indicators to assist in early detection, visualized through Seaborn.",
+        id: "Menganalisis indikator klinis untuk membantu deteksi dini, divisualisasikan melalui Seaborn.",
+      },
       features: [
-        "Rule-based Reasoning",
-        "Clinical Indicator Analysis",
-        "Data Visualization with Seaborn",
+        { en: "Rule-based Reasoning", id: "Penalaran Berbasis Aturan" },
+        { en: "Indicator Analysis", id: "Analisis Indikator" },
+        { en: "Advanced Visualization", id: "Visualisasi Tingkat Lanjut" },
       ],
       technologies: ["Python", "Matplotlib", "Seaborn", "Google Colab"],
       links: [
@@ -428,14 +469,19 @@ export const DATA = {
       dates: "2025",
       active: true,
       category: "Data Analyst",
-      role: "Data Scientist",
-      description:
-        "Analisis sentimen komentar YouTube menggunakan 6 algoritma Machine Learning.",
-      details: "Mengumpulkan dan mengolah lebih dari 5.000 komentar YouTube untuk membandingkan performa algoritma klasifikasi dalam mendeteksi sentimen publik.",
+      role: { en: "Data Scientist", id: "Ilmuwan Data" },
+      description: {
+        en: "NLP-driven sentiment analysis of public discourse using benchmarked Machine Learning algorithms.",
+        id: "Analisis sentimen berbasis NLP pada wacana publik menggunakan algoritma Machine Learning.",
+      },
+      details: {
+        en: "Processed over 5,000 social data points to compare classification performance in public sentiment detection.",
+        id: "Memproses lebih dari 5.000 titik data sosial untuk membandingkan performa klasifikasi dalam deteksi sentimen publik.",
+      },
       features: [
-        "NLP Crawling & Preprocessing",
-        "Benchmark 6 ML Algorithms",
-        "Sentiment Visualization",
+        { en: "NLP Preprocessing", id: "Pra-pemrosesan NLP" },
+        { en: "Algorithm Benchmarking", id: "Benchmarking Algoritma" },
+        { en: "Public Discourse Viz", id: "Visualisasi Wacana Publik" },
       ],
       technologies: ["Python", "Scikit-Learn", "TensorFlow", "Google Colab"],
       links: [
@@ -455,15 +501,20 @@ export const DATA = {
       dates: "2026",
       active: true,
       category: "Web Development",
-      role: "Fullstack Developer",
-      description:
-        "Platform web terpusat dengan 51 alat utilitas termasuk AI Background Removal dan OCR.",
-      details: "Engineered a centralized web platform featuring 51 utility tools, seamlessly integrating advanced capabilities such as AI-powered background removal, OCR text extraction, and CAD to PDF rendering. Designed a responsive, custom-styled frontend paired with a highly secure Python backend that processes user files directly in memory (BytesIO).",
+      role: { en: "Fullstack Developer", id: "Pengembang Fullstack" },
+      description: {
+        en: "Centralized web platform with 51 utility tools featuring AI background removal and OCR text extraction.",
+        id: "Platform web terpusat dengan 51 alat utilitas yang menampilkan AI background removal dan ekstraksi teks OCR.",
+      },
+      details: {
+        en: "Designed a responsive frontend paired with a secure Python backend that processes user files directly in memory.",
+        id: "Merancang frontend responsif yang dipasangkan dengan backend Python aman yang memproses file langsung di memori.",
+      },
       features: [
-        "AI-powered Background Removal",
-        "OCR Text Extraction",
-        "CAD to PDF Rendering",
-        "In-memory File Processing",
+        { en: "AI Background Removal", id: "AI Background Removal" },
+        { en: "OCR Extraction", id: "Ekstraksi OCR" },
+        { en: "CAD Rendering", id: "Rendering CAD" },
+        { en: "Secure In-memory Processing", id: "Pemrosesan Memori Aman" },
       ],
       technologies: ["Python", "Flask", "Vanilla JS", "PyMuPDF", "Pillow", "Rembg"],
       links: [
@@ -483,8 +534,10 @@ export const DATA = {
       title: "AI Engineer for Milenial",
       dates: "2025",
       location: "Digital Talent Scholarship",
-      description:
-        "Pelatihan Micro Skill tentang penerapan kecerdasan buatan untuk meningkatkan produktivitas dan pemahaman teknologi AI.",
+      description: {
+        en: "Micro Skill training on AI implementation for productivity and technological literacy.",
+        id: "Pelatihan Micro Skill tentang penerapan AI untuk produktivitas dan literasi teknologi.",
+      },
       icon: <Brain className="size-8 text-blue-500" />,
       links: [
         {
@@ -498,7 +551,10 @@ export const DATA = {
       title: "Introduce to Cloud Computing",
       dates: "2025",
       location: "Digitalent Scolarship",
-      description: "Dasar-dasar komputasi awan dan layanan cloud populer.",
+      description: {
+        en: "Fundamental concepts of cloud computing and popular cloud service models.",
+        id: "Konsep dasar komputasi awan dan model layanan cloud populer.",
+      },
       icon: <Cloud className="size-8 text-sky-500" />,
       links: [
         {
@@ -512,8 +568,10 @@ export const DATA = {
       title: "Introduction to JavaScript",
       dates: "2025",
       location: "MySkill",
-      description:
-        "Mengenal dasar-dasar JavaScript sebagai fondasi utama dalam pengembangan web modern.",
+      description: {
+        en: "Core JavaScript fundamentals as the primary foundation for modern web development.",
+        id: "Dasar-dasar inti JavaScript sebagai fondasi utama pengembangan web modern.",
+      },
       icon: <Code2 className="size-8 text-yellow-500" />,
       links: [
         {
@@ -527,8 +585,10 @@ export const DATA = {
       title: "Project: Prediction Model",
       dates: "2025",
       location: "MySkill",
-      description:
-        "Membangun model prediksi berbasis data untuk menghasilkan insight dan mendukung pengambilan keputusan.",
+      description: {
+        en: "Building data-driven predictive models to generate insights for decision support.",
+        id: "Membangun model prediktif berbasis data untuk menghasilkan wawasan bagi pendukung keputusan.",
+      },
       icon: <BarChart className="size-8 text-green-500" />,
       links: [
         {
@@ -542,8 +602,10 @@ export const DATA = {
       title: "Python Fundamental for Data Science",
       dates: "2025",
       location: "DQLab",
-      description:
-        "Menyelesaikan program sertifikasi Python Fundamental for Data Science yang membahas dasar pemrograman Python untuk analisis data.",
+      description: {
+        en: "Certification in Python fundamentals specifically tailored for data analysis workflows.",
+        id: "Sertifikasi dasar-dasar Python yang dirancang khusus untuk alur kerja analisis data.",
+      },
       icon: <Terminal className="size-8 text-indigo-500" />,
       links: [
         {
@@ -557,8 +619,10 @@ export const DATA = {
       title: "Introduction to Data Science with Python",
       dates: "2025",
       location: "DQLab",
-      description:
-        "Menyelesaikan program pengenalan Data Science menggunakan Python, mencakup konsep dasar pemrograman, struktur bahasa Python, serta penerapan awal analisis data.",
+      description: {
+        en: "Exploration of data structures and initial application of data analysis techniques.",
+        id: "Eksplorasi struktur data dan penerapan awal teknik analisis data.",
+      },
       icon: <Database className="size-8 text-purple-500" />,
       links: [
         {
@@ -569,4 +633,4 @@ export const DATA = {
       ],
     },
   ],
-} ;
+};

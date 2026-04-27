@@ -13,8 +13,14 @@ AOS.init({
   easing: "ease-in-out",
 });
 
+import { LanguageProvider } from "./context/LanguageContext.jsx";
+
 const Root = () => {
-  return <App />;
+  return (
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>
+  );
 };
 
 createRoot(document.getElementById("root")).render(

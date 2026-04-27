@@ -9,8 +9,12 @@ import {
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/LanguageContext";
+import { Languages } from "lucide-react";
 
 export default function Navbar() {
+  const { t, lang, toggleLanguage } = useLanguage();
+
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
       <div className="fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
@@ -30,7 +34,7 @@ export default function Navbar() {
                 </a>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{item.label}</p>
+                <p>{t(item.label)}</p>
               </TooltipContent>
             </Tooltip>
           </DockIcon>
@@ -58,6 +62,26 @@ export default function Navbar() {
               </Tooltip>
             </DockIcon>
           ))}
+        <Separator orientation="vertical" className="h-full py-2" />
+        <DockIcon>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                onClick={toggleLanguage}
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "size-12 flex items-center justify-center"
+                )}
+              >
+                <Languages className="size-4 transition-all duration-300 hover:scale-110 active:rotate-12" />
+                <span className="sr-only">Toggle Language</span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{lang === 'en' ? "Switch to Indonesia" : "Ganti ke Inggris"}</p>
+            </TooltipContent>
+          </Tooltip>
+        </DockIcon>
       </Dock>
     </div>
   );
