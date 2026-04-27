@@ -256,7 +256,7 @@ const Page = () => {
                 <div className="flex gap-3 pt-2">
                   <Button asChild size="default" className="rounded-full gap-2 font-semibold shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all">
                     <a
-                      href="https://drive.google.com/file/d/1IAerGr5YLksRRonMZvUfVoT9XAEJzrWJ/view?usp=sharing"
+                      href="https://drive.google.com/file/d/1y_rb-L3l5gMeMOse02aKOfLmzEAmDD5r/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
