@@ -332,8 +332,13 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/assets/proyek/proyek2.webp",
-      images: ["/assets/proyek/proyek2.webp"],
+      image: "/assets/proyek/tc1.png",
+      images: [
+        "/assets/proyek/tc1.png",
+        "/assets/proyek/tc2.png",
+        "/assets/proyek/tc3.png",
+        "/assets/proyek/tc4.png",
+      ],
       video: "",
     },
     {
