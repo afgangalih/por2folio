@@ -20,7 +20,7 @@ export const DATA = {
     "React", "Next.js", "Laravel", "Flutter", "Node.js", "Python", "Tailwind CSS", 
     "TypeScript", "SQL", "Framer Motion", "VSCode", "Bootstrap", "Github", 
     "Figma", "Power BI", "PHP", "Supabase", "Zustand", "Firebase", "Django", 
-    "Dart", "PostgreSQL", "MySQL", "Docker",
+    "Dart", "PostgreSQL", "MySQL", "Docker", "FastAPI", "NumPy",
   ],
   navbar: [
     { href: "#hero", icon: HomeIcon, label: { en: "Home", id: "Beranda" } },
@@ -526,6 +526,42 @@ export const DATA = {
       ],
       image: "/assets/proyek/1.png",
       images: ["/assets/proyek/1.png", "/assets/proyek/2.png", "/assets/proyek/3.png"],
+      video: "",
+    },
+    {
+      title: "oemah.mu",
+      href: "https://github.com/afgangalih/oemah.mu",
+      dates: "2026",
+      active: true,
+      category: "Decision Support System",
+      role: { en: "Fullstack Developer", id: "Pengembang Fullstack" },
+      description: {
+        en: "A professional Decision Support System (DSS) platform designed for objective property selection using advanced mathematical modeling.",
+        id: "Platform Sistem Pendukung Keputusan (SPK) profesional yang dirancang untuk pemilihan properti secara objektif menggunakan pemodelan matematika tingkat lanjut.",
+      },
+      details: {
+        en: "Engineered a high-performance SaaS application utilizing the EDAS (Evaluation Based on Distance from Average Solution) method. Integrated a Next.js frontend with a FastAPI backend to process complex matrix computations for ranking property alternatives based on 8 dynamic criteria.",
+        id: "Membangun aplikasi SaaS berperforma tinggi menggunakan metode EDAS (Evaluation Based on Distance from Average Solution). Mengintegrasikan frontend Next.js dengan backend FastAPI untuk memproses perhitungan matriks kompleks dalam pemeringkatan alternatif properti berdasarkan 8 kriteria dinamis.",
+      },
+      features: [
+        { en: "Multi-Criteria Decision Analysis", id: "Analisis Keputusan Multi-Kriteria" },
+        { en: "Interactive Dynamic Weighting", id: "Pembobotan Dinamis Interaktif" },
+        { en: "Analytical Data Visualization", id: "Visualisasi Data Analitis" },
+      ],
+      technologies: ["Next.js", "FastAPI", "Python", "NumPy", "Tailwind CSS", "Recharts"],
+      links: [
+        {
+          type: "GitHub",
+          href: "https://github.com/afgangalih/oemah.mu",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/assets/proyek/oemahmo1.png",
+      images: [
+        "/assets/proyek/oemahmo1.png",
+        "/assets/proyek/oemahmo2.png",
+        "/assets/proyek/oemahmo3.png",
+      ],
       video: "",
     },
   ],

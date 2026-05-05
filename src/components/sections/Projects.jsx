@@ -18,7 +18,6 @@ const Projects = () => {
 
   const filteredProjects = listProyek.filter((proyek) => {
     if (activeFilter === "Semua") return true;
-    // Logika filter disiapkan murni untuk variabel 'category' yang nanti Anda tambahkan
     return proyek.category === activeFilter;
   });
 
@@ -36,7 +35,6 @@ const Projects = () => {
 
   return (
     <section id="proyek" className="mt-24 md:mt-40 py-10 px-4 max-w-7xl mx-auto">
-      {/* HEADER */}
       <div className="text-center mb-10 md:mb-12" data-aos="fade-up">
         <h2 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter uppercase mb-4">
           Featured <span className="text-violet-500">Projects</span>
@@ -46,7 +44,6 @@ const Projects = () => {
         </p>
       </div>
 
-      {/* FILTER TABS */}
       <div className="flex flex-wrap justify-center gap-2 mb-12 md:mb-16" data-aos="fade-up" data-aos-delay="100">
         {categories.map((category) => (
           <button
@@ -63,7 +60,6 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {filteredProjects.map((proyek, index) => (
           <div
@@ -107,7 +103,6 @@ const Projects = () => {
                   </p>
                 </div>
 
-                {/* FOOTER */}
                 <div className="flex items-center justify-between pt-5 border-t border-zinc-800 group-hover:border-violet-500/20 transition-colors duration-500">
                   <div className="flex flex-wrap gap-2">
                     {proyek.tools.slice(0, 2).map((tool, i) => (
@@ -125,7 +120,6 @@ const Projects = () => {
                     )}
                   </div>
 
-                  {/* ARROW BUTTON */}
                   <div className="w-11 h-11 flex items-center justify-center rounded-full border border-zinc-800 text-zinc-500 group-hover:bg-violet-600 group-hover:text-white group-hover:border-violet-600 transition-all duration-500 group-hover:rotate-45 shadow-lg">
                     <i className="ri-arrow-right-up-line text-xl" />
                   </div>
@@ -136,7 +130,6 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* ================= FULLSCREEN IMAGE ================= */}
       {fullScreenImage && (
         <div 
           className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-md animate-fadeIn"
@@ -157,7 +150,6 @@ const Projects = () => {
         </div>
       )}
 
-      {/* ================= MODAL ================= */}
       {selectedProject && (
         <div className="fixed inset-0 z-[999] flex items-end md:items-center justify-center p-3 sm:p-6">
           <div
@@ -166,7 +158,6 @@ const Projects = () => {
           />
 
           <div className="relative w-full max-w-3xl bg-zinc-950 border border-zinc-800 rounded-[2rem] shadow-2xl max-h-[90svh] flex flex-col overflow-hidden animate-fadeInScale">
-            {/* MODAL HEADER */}
             <div className="sticky top-0 z-20 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800 p-6 flex justify-between items-center">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-violet-400 font-black mb-1">
@@ -185,7 +176,6 @@ const Projects = () => {
               </button>
             </div>
 
-            {/* MODAL BODY */}
             <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 custom-scrollbar">
               <div className="relative group/img overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/50">
                 {selectedProject.images && selectedProject.images.length > 0 ? (
@@ -277,7 +267,6 @@ const Projects = () => {
               </div>
             </div>
 
-            {/* MODAL FOOTER */}
             <div className="border-t border-zinc-800 p-6 bg-zinc-950 flex flex-col sm:flex-row gap-4">
               {selectedProject.github && (
                 <a

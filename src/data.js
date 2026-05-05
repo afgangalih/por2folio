@@ -422,13 +422,12 @@ export const listProyek = [
 
 
 
-// Sertifikat.js
 export const listSertifikat = [
   {
     id: 1,
     nama: "AI Engineer for Milenial",
     organisasi: "Digital Talent Scholarship",
-    logo: "ri-award-line", //
+    logo: "ri-award-line",
     tahun: "2025",
     deskripsi:
       "Pelatihan Micro Skill tentang penerapan kecerdasan buatan untuk meningkatkan produktivitas dan pemahaman teknologi AI.",
@@ -452,20 +451,6 @@ export const listSertifikat = [
       "https://drive.google.com/file/d/1-B-FFaKJKcfIxyZm-F-F2WQesfExTHAS/view?usp=sharing",
   },
 
-  // {
-  //   id: 3,
-  //   nama: "Data Analysis Fundamental",
-  //   organisasi: "MySkill",
-  //   logo: "ri-award-line",
-  //   tahun: "2025",
-  //   deskripsi:
-  //     "Memahami dasar analisis data untuk mengolah, membaca, dan menarik insight dari data secara efektif.",
-  //   details:
-  //     "Pelatihan ini mencakup pengenalan data analysis, pemahaman data, proses pengolahan data, serta latihan mandiri untuk meningkatkan kemampuan analisis. Diselenggarakan oleh MySkill sebagai bagian dari program E-Learning.",
-  //   tools: ["Data Analysis", "Data Interpretation", "Analytical Thinking"],
-  //   kredensi:
-  //     "https://drive.google.com/file/d/1ff7pPWL67IeUAxF5E4QhjktsQxuI8P2N/view?usp=sharing",
-  // },
   {
     id: 4,
     nama: "Introduction to JavaScript",

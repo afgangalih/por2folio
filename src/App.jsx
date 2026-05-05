@@ -43,30 +43,26 @@ const ProjectModal = ({ project, isOpen, onOpenChange }) => {
   return (
     <>
       <Dialog open={isOpen} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 gap-0 border-none shadow-2xl bg-background/98 backdrop-blur-xl">
-          {/* Modern Horizontal Header */}
-          <div className="relative border-b overflow-hidden">
-            {/* Subtle accent line at top */}
+        <DialogContent className="max-w-5xl w-[95vw] max-h-[90vh] overflow-y-auto p-0 gap-0 border-none shadow-2xl bg-background/98 backdrop-blur-xl">
+          <div className="relative border-b bg-muted/20">
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
             
-            <div className="px-6 md:px-8 pr-14 md:pr-16 py-5 flex items-center justify-between gap-6">
-              {/* Left: Category + Title */}
-              <div className="flex items-center gap-4 min-w-0">
+            <div className="px-6 md:px-8 pr-14 md:pr-16 py-6 flex items-center justify-between gap-6">
+              <div className="flex items-center gap-5 min-w-0">
                 <div className="hidden sm:block w-[3px] h-10 bg-gradient-to-b from-primary to-violet-500 rounded-full shrink-0" />
                 <div className="min-w-0">
-                  <div className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/70 mb-0.5">
+                  <div className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/70 mb-1">
                     {project.category}
                   </div>
-                  <DialogTitle className="text-xl md:text-2xl font-black tracking-tight leading-none truncate">
-                    {project.title.split(":")[0]}
+                  <DialogTitle className="text-xl md:text-3xl font-black tracking-tighter leading-tight italic uppercase py-1 pr-2">
+                    {project.title}
                   </DialogTitle>
                 </div>
               </div>
 
-              {/* Right: Role Badge */}
               {project.role && (
-                <div className="shrink-0">
-                  <span className="inline-flex items-center rounded-full border border-border bg-muted/40 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                <div className="shrink-0 hidden sm:block">
+                  <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-primary">
                     {t(project.role)}
                   </span>
                 </div>
@@ -76,121 +72,121 @@ const ProjectModal = ({ project, isOpen, onOpenChange }) => {
 
           <DialogDescription className="sr-only">{t(project.description)}</DialogDescription>
 
-          {/* Custom Close Button for Main Modal */}
-          <button 
-            onClick={() => onOpenChange(false)}
-            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground/60 hover:text-foreground transition-all border border-border group"
-          >
-            <Icons.close className="size-4 group-hover:rotate-90 transition-transform duration-300" />
-          </button>
-
-          <div className="p-6 md:p-8 space-y-8">
-            {/* Centered Gallery Section */}
-            <div className="flex flex-col items-center gap-6">
-              <div className="w-full relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-violet-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-700" />
-                <div 
-                  className="relative aspect-video rounded-2xl overflow-hidden border shadow-2xl bg-zinc-950 cursor-zoom-in"
-                  onClick={() => setLightboxImage(activeImage)}
-                >
-                  <img 
-                    src={activeImage} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover object-top transition-all duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 text-white transform scale-90 group-hover:scale-100 transition-transform">
-                      <Icons.globe className="size-6" />
+          <div className="p-6 md:p-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+              <div className="lg:col-span-7 space-y-6">
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-violet-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-700" />
+                  <div 
+                    className="relative aspect-video rounded-2xl overflow-hidden border shadow-2xl bg-zinc-950 cursor-zoom-in"
+                    onClick={() => setLightboxImage(activeImage)}
+                  >
+                    <img 
+                      src={activeImage} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-top transition-all duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/30 text-white transform scale-90 group-hover:scale-100 transition-transform">
+                        <ExternalLink className="size-6" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              {project.images && project.images.length > 1 && (
-                <div className="flex flex-wrap justify-center gap-3">
-                  {project.images.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveImage(img)}
-                      className={cn(
-                        "w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:-translate-y-1",
-                        activeImage === img 
-                          ? "border-primary shadow-[0_0_15px_rgba(var(--primary),0.3)] scale-110" 
-                          : "border-border/50 opacity-40 hover:opacity-100 hover:border-primary/50"
-                      )}
-                    >
-                      <img src={img} className="w-full h-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-          {/* Project Details */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            <div className="md:col-span-2 space-y-6">
-              <div>
-                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
-                  <span className="w-8 h-[1px] bg-primary/30" />
-                  {t({ en: "About the project", id: "Tentang Proyek" })}
-                </h4>
-                <div className="prose prose-sm dark:prose-invert max-w-full text-muted-foreground leading-relaxed text-sm md:text-base italic font-medium">
-                  {t(project.details) || t(project.description)}
-                </div>
-              </div>
-
-              {project.features && (
-                <div>
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
-                    <span className="w-8 h-[1px] bg-primary/30" />
-                    {t({ en: "Key Features", id: "Fitur Utama" })}
-                  </h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {project.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3 p-3 rounded-xl bg-muted/30 border border-border/50 text-xs font-bold text-foreground/80 group hover:border-primary/30 transition-colors">
-                        <div className="mt-1 size-1.5 rounded-full bg-primary shrink-0 group-hover:scale-150 transition-transform" />
-                        {t(feature)}
-                      </li>
+                
+                {project.images && project.images.length > 1 && (
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                    {project.images.map((img, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveImage(img)}
+                        className={cn(
+                          "w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:-translate-y-1",
+                          activeImage === img 
+                            ? "border-primary shadow-[0_0_15px_rgba(var(--primary),0.3)] scale-110" 
+                            : "border-border/50 opacity-40 hover:opacity-100 hover:border-primary/50"
+                        )}
+                      >
+                        <img src={img} className="w-full h-full object-cover" />
+                      </button>
                     ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            <div className="space-y-8">
-              <div>
-                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
-                  <span className="w-8 h-[1px] bg-primary/30" />
-                  Tech Stack
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="rounded-md bg-zinc-100 dark:bg-zinc-800/50 border border-border/50 text-[9px] font-black uppercase tracking-tighter px-2 py-1">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
 
-              <div className="flex flex-col gap-3">
-                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-1">
-                  Launch
-                </h4>
-                {project.links?.map((link, idx) => (
-                  <Button key={idx} asChild size="lg" className="rounded-xl gap-3 font-black uppercase italic tracking-tighter shadow-xl shadow-primary/10 hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300">
-                    <a href={link.href} target="_blank" rel="noopener noreferrer">
-                      {link.type === "GitHub" ? <Icons.github className="size-5" /> : <ExternalLink className="size-5" />}
-                      {link.type}
-                    </a>
-                  </Button>
-                ))}
+              <div className="lg:col-span-5 flex flex-col justify-between space-y-10">
+                <div className="space-y-10">
+                  {project.role && (
+                    <div className="sm:hidden mb-6">
+                      <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-primary">
+                        {t(project.role)}
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="space-y-4">
+                    <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary flex items-center gap-2">
+                      <span className="w-8 h-[1px] bg-primary/30" />
+                      {t({ en: "Project Overview", id: "Ringkasan Proyek" })}
+                    </h4>
+                    <div className="prose prose-sm dark:prose-invert max-w-full text-muted-foreground leading-relaxed text-sm md:text-base italic font-medium">
+                      {t(project.details) || t(project.description)}
+                    </div>
+                  </div>
+
+                  {project.features && (
+                    <div className="space-y-4">
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary flex items-center gap-2">
+                        <span className="w-8 h-[1px] bg-primary/30" />
+                        {t({ en: "Key Features", id: "Fitur Utama" })}
+                      </h4>
+                      <ul className="grid grid-cols-1 gap-3">
+                        {project.features.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-3 p-3 rounded-xl bg-muted/30 border border-border/50 text-xs font-bold text-foreground/80 group hover:border-primary/30 transition-colors">
+                            <div className="mt-1.5 size-1.5 rounded-full bg-primary shrink-0 group-hover:scale-150 transition-transform" />
+                            {t(feature)}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div className="space-y-4">
+                    <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary flex items-center gap-2">
+                      <span className="w-8 h-[1px] bg-primary/30" />
+                      Tech Stack
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <Badge key={tech} variant="secondary" className="rounded-md bg-zinc-100 dark:bg-zinc-800/50 border border-border/50 text-[9px] font-black uppercase tracking-tighter px-2.5 py-1">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3 pt-6 border-t border-border/50">
+                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-1">
+                    Launch Project
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {project.links?.map((link, idx) => (
+                      <Button key={idx} asChild size="lg" className="rounded-xl gap-3 font-black uppercase italic tracking-tighter shadow-xl shadow-primary/10 hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300">
+                        <a href={link.href} target="_blank" rel="noopener noreferrer">
+                          {link.type === "GitHub" ? <Icons.github className="size-5" /> : <ExternalLink className="size-5" />}
+                          {link.type}
+                        </a>
+                      </Button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </DialogContent>
-    </Dialog>
-    <Dialog open={!!lightboxImage} onOpenChange={() => setLightboxImage(null)}>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={!!lightboxImage} onOpenChange={() => setLightboxImage(null)}>
         <DialogContent className="max-w-[95vw] md:max-w-[90vw] h-fit p-1 border-none bg-zinc-950/90 backdrop-blur-2xl shadow-none overflow-hidden rounded-3xl">
           <div className="relative w-full h-full flex items-center justify-center">
             <img 
@@ -199,7 +195,6 @@ const ProjectModal = ({ project, isOpen, onOpenChange }) => {
               className="w-full h-auto max-h-[92vh] object-contain rounded-2xl select-none"
               style={{ imageRendering: 'auto' }}
             />
-            {/* Minimalist Close Button */}
             <button 
               onClick={() => setLightboxImage(null)}
               className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 group"
@@ -239,7 +234,6 @@ const Page = () => {
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl">
           <div className="flex items-center justify-between gap-6">
-            {/* Text content */}
             <div className="flex flex-col gap-3 flex-1">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
@@ -268,7 +262,6 @@ const Page = () => {
               </BlurFade>
             </div>
 
-            {/* Avatar */}
             <BlurFade delay={BLUR_FADE_DELAY}>
               <div className="relative shrink-0 group">
                 <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 to-violet-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-700" />
