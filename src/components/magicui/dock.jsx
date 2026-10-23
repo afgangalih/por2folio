@@ -53,7 +53,6 @@ const Dock = React.forwardRef(
 Dock.displayName = "Dock";
 
 const DockIcon = ({
-  size,
   magnification = DEFAULT_MAGNIFICATION,
   distance = DEFAULT_DISTANCE,
   mousex,

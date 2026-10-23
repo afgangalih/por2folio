@@ -5,7 +5,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Roboto Mono", monospace;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -137,18 +138,46 @@
   }
 }
 
-/* Custom styles from original index.css if needed */
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+/* Lenis Smooth Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
-.animate-fadeInScale {
-  animation: fadeInScale 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+/* Tamal Sen Signature Orb Glow */
+.tamal-orb {
+  background: #ffffff;
+  border-radius: 9999px;
+  box-shadow:
+    10px 0px 80px 0px rgba(255, 85, 85, 1),
+    -10px 0px 100px 0px rgba(251, 255, 0, 1),
+    0px 0px 50px 0px rgba(255, 255, 255, 1),
+    inset -20px 0px 300px 0px rgba(227, 255, 75, 1),
+    inset 20px 0px 300px 0px rgba(255, 64, 214, 1),
+    inset -20px 0px 30px 0px rgba(255, 0, 0, 1),
+    inset 20px 0px 30px 0px rgba(255, 212, 0, 1),
+    inset 0px 0px 30px 0px rgba(255, 255, 255, 1);
+}
+
+/* Custom scrollbar for dark tech aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #141316;
+}
+::-webkit-scrollbar-thumb {
+  background: #2f2d35;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #66d9ed;
 }

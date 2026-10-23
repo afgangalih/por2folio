@@ -11,7 +11,6 @@ import ReactMarkdown from "react-markdown";
 
 export function ProjectCard({
   title,
-  href,
   description,
   dates,
   tags,
