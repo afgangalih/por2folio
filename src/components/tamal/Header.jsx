@@ -28,39 +28,31 @@ export const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#111113]/85 backdrop-blur-xl border-b border-white/[0.08] py-3.5 shadow-lg shadow-black/20"
-          : "bg-transparent py-5"
+          ? "bg-[#080808]/85 backdrop-blur-xl border-b border-white/[0.08] py-2 sm:py-2.5 shadow-lg shadow-black/30"
+          : "bg-transparent py-3 sm:py-4 border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
-        
-        {/* Brand / Logo */}
+        {/* Brand / Logo — prominent within slim bar */}
         <a
           href="#hero"
-          className="flex items-center gap-2.5 group focus:outline-none"
+          className="flex items-center group focus:outline-none"
+          aria-label="Afgan Galih Portfolio"
         >
-          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-colors">
-            <img
-              src={DATA.avatarUrl}
-              alt={DATA.name}
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-          <span className="font-sans text-xs sm:text-sm font-semibold tracking-tight text-white group-hover:text-white/80 transition-colors">
-            {DATA.name}
-            <span className="text-[#86868b] font-mono text-[11px] ml-1.5 font-normal">
-              .dev
-            </span>
-          </span>
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="h-9 sm:h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-[0_0_16px_rgba(102,217,237,0.5)]"
+          />
         </a>
 
         {/* Desktop Nav Items (Apple Minimalist Typography) */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+        <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="px-3 py-1.5 font-sans text-xs tracking-tight text-[#a1a1a6] hover:text-white transition-colors rounded-full hover:bg-white/[0.04]"
+              className="px-3.5 py-1 font-sans text-xs tracking-tight text-[#a1a1a6] hover:text-white transition-colors rounded-full hover:bg-white/[0.04]"
             >
               <span>{item.label}</span>
             </a>
@@ -68,14 +60,14 @@ export const Header = () => {
         </nav>
 
         {/* Right Actions: Apple-style Lang Toggle & White Solid CV Button */}
-        <div className="hidden sm:flex items-center gap-2.5">
+        <div className="hidden sm:flex items-center gap-2">
           {/* Language Switcher Capsule */}
           <button
             onClick={() => setLang(lang === "en" ? "id" : "en")}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.06] font-mono text-[11px] text-[#a1a1a6] hover:text-white transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/[0.08] hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.06] font-mono text-[11px] text-[#a1a1a6] hover:text-white transition-all cursor-pointer"
             title="Switch Language"
           >
-            <Globe className="size-3 text-[#86868b]" />
+            <Globe className="size-3 text-[#66d9ed]" />
             <span className="uppercase font-semibold tracking-wider">{lang}</span>
           </button>
 
@@ -84,7 +76,7 @@ export const Header = () => {
             href="https://drive.google.com/file/d/1y_rb-L3l5gMeMOse02aKOfLmzEAmDD5r/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-black hover:bg-[#e5e5e7] font-sans text-xs font-semibold tracking-tight transition-all shadow-sm active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white text-black hover:bg-[#ececec] font-sans text-xs font-semibold tracking-tight transition-all shadow-sm active:scale-95 cursor-pointer"
           >
             <Download className="size-3.5" />
             <span>{t({ en: "Resume", id: "Unduh CV" })}</span>
@@ -111,7 +103,7 @@ export const Header = () => {
 
       {/* Mobile Menu Dropdown (Apple Frosted Glass) */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#111113]/95 backdrop-blur-2xl border-b border-white/[0.08] px-6 py-6 space-y-4">
+        <div className="md:hidden bg-[#0c0c0e]/95 backdrop-blur-2xl border-t border-white/[0.08] px-6 py-5 mt-2 space-y-4">
           <div className="flex flex-col gap-1">
             {navItems.map((item) => (
               <a

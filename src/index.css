@@ -57,6 +57,11 @@
     }
   }
 
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
   --animation-marquee: marquee var(--duration) linear infinite;
   --animation-marquee-vertical: marquee-vertical var(--duration) linear infinite;
 }

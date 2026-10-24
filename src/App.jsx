@@ -8,6 +8,7 @@ import { Hero } from "@/components/tamal/Hero";
 import { Expertise } from "@/components/tamal/Expertise";
 import { Work } from "@/components/tamal/Work";
 import { Experience } from "@/components/tamal/Experience";
+import { FaqBreakout } from "@/components/tamal/FaqBreakout";
 import { ContactBento } from "@/components/tamal/ContactBento";
 import { Footer } from "@/components/tamal/Footer";
 import { ProjectArticle } from "@/components/tamal/ProjectArticle";
@@ -56,7 +57,7 @@ export default function App() {
           return;
         }
       }
-      if (!hash || hash === "#work" || hash === "#hero" || hash === "#expertise" || hash === "#experience" || hash === "#contact") {
+      if (!hash || hash === "#work" || hash === "#hero" || hash === "#expertise" || hash === "#experience" || hash === "#contact" || hash === "#faq") {
         setSelectedProject(null);
       }
     };
@@ -98,7 +99,7 @@ export default function App() {
 
   // Otherwise, render the main Landing Page
   return (
-    <div className="min-h-screen bg-[#1a191d] text-white selection:bg-[#66d9ed] selection:text-black">
+    <div className="min-h-screen bg-[#080808] text-white selection:bg-[#66d9ed] selection:text-black">
       {/* Tamal Sen Header Navigation */}
       <Header />
 
@@ -116,7 +117,10 @@ export default function App() {
         {/* 4. Professional Experience & Education */}
         <Experience />
 
-        {/* 5. Contact & Bento Highlights */}
+        {/* 5. Breakout CTA Banner & Interactive FAQs */}
+        <FaqBreakout />
+
+        {/* 6. Contact & Bento Highlights */}
         <ContactBento />
       </main>
 

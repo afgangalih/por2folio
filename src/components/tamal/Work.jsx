@@ -41,29 +41,30 @@ export const Work = ({ onSelectProject }) => {
   const featured = listProyek.find((p) => p.id === 2) || listProyek[0];
 
   return (
-    <section id="work" className="relative py-28 px-5 sm:px-8 max-w-7xl mx-auto">
-      {/* Section Header */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
-        <div className="lg:col-span-5">
-          <h2 className="font-sans font-bold text-5xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-none">
-            My
-            <br />
-            Work
-          </h2>
+    <section id="work" className="relative w-full bg-[#080808] py-28 sm:py-36 border-t border-white/[0.06]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        {/* Section Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+          <div className="lg:col-span-5">
+            <h2 className="font-sans font-bold text-5xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-none">
+              My
+              <br />
+              Work
+            </h2>
+          </div>
+          <div className="lg:col-span-7">
+            <p className="font-mono text-xs sm:text-sm text-[#86868b] max-w-2xl leading-relaxed">
+              {t({
+                en: "Selected software engineering projects across web applications, machine learning, and mobile ecosystems. Emphasizing clean systems, performance, and aesthetic precision.",
+                id: "Pilihan proyek rekayasa perangkat lunak dalam aplikasi web, machine learning, dan ekosistem mobile. Menitikberatkan pada arsitektur bersih, performa, dan presisi estetika.",
+              })}
+            </p>
+          </div>
         </div>
-        <div className="lg:col-span-7">
-          <p className="font-mono text-xs sm:text-sm text-[#86868b] max-w-2xl leading-relaxed">
-            {t({
-              en: "Selected software engineering projects across web applications, machine learning, and mobile ecosystems. Emphasizing clean systems, performance, and aesthetic precision.",
-              id: "Pilihan proyek rekayasa perangkat lunak dalam aplikasi web, machine learning, dan ekosistem mobile. Menitikberatkan pada arsitektur bersih, performa, dan presisi estetika.",
-            })}
-          </p>
-        </div>
-      </div>
 
-      {/* Featured Project Showcase Card (Refined Apple Minimalist Architecture) */}
-      {featured && (
-        <div className="relative mb-20 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#141416] p-7 sm:p-12 transition-all duration-300 hover:border-white/20 group">
+        {/* Featured Project Showcase Card (Refined Apple Minimalist Architecture) */}
+        {featured && (
+          <div className="relative mb-20 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0d0d10] p-7 sm:p-12 transition-all duration-300 hover:border-white/20 group">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Content */}
             <div className="lg:col-span-6 space-y-5">
@@ -173,7 +174,7 @@ export const Work = ({ onSelectProject }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className={`group rounded-2xl overflow-hidden border border-white/[0.08] bg-[#141416] hover:border-white/20 transition-all duration-300 flex flex-col justify-between ${
+                className={`group rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0d0d10] hover:border-white/20 transition-all duration-300 flex flex-col justify-between ${
                   isWide ? "sm:col-span-2 lg:col-span-2" : "col-span-1"
                 }`}
               >
@@ -234,6 +235,7 @@ export const Work = ({ onSelectProject }) => {
           })}
         </AnimatePresence>
       </motion.div>
+      </div>
     </section>
   );
 };
