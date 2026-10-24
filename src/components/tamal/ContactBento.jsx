@@ -1,202 +1,273 @@
-import React from "react";
+import React, { useState } from "react";
 import { DATA } from "@/data/resume";
-import { listSertifikat } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
-import { ArrowUpRight, Award } from "lucide-react";
+import { ArrowUpRight, Mail, Copy, Check, Send, MessageCircle } from "lucide-react";
 
 export const ContactBento = () => {
   const { t } = useLanguage();
+  const [copied, setCopied] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  const socialLinks = [
-    { name: "WhatsApp", url: DATA.contact.social.whatsapp.url, handle: "+62 857 4957 7424" },
-    { name: "LinkedIn", url: DATA.contact.social.LinkedIn.url, handle: "linkedin.com/in/afgan-almadinah" },
-    { name: "GitHub", url: DATA.contact.social.GitHub.url, handle: "github.com/afgangalih" },
-    { name: "Instagram", url: DATA.contact.social.instagram.url, handle: "@afgnglh" },
-  ];
+  const copyEmail = () => {
+    navigator.clipboard.writeText(DATA.contact.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
-  const cert1 = listSertifikat[0];
-  const cert2 = listSertifikat[1];
-  const cert3 = listSertifikat[2] || listSertifikat[3];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+    
+    // Construct prefilled mailto as reliable fallback
+    const subject = encodeURIComponent(`Project Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || "Not provided"}\n\nMessage:\n${formData.message}`
+    );
+    window.open(`mailto:${DATA.contact.email}?subject=${subject}&body=${body}`, "_blank");
+    
+    setFormSubmitted(true);
+    setTimeout(() => {
+      setFormSubmitted(false);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    }, 5000);
+  };
 
   return (
-    <section id="contact" className="relative bg-[#0d0d0f] border-t border-white/[0.08] py-28 sm:py-36">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+    <section id="contact" className="relative bg-[#080808] border-t border-white/[0.08] py-24 sm:py-32 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Direct Communication & Availability */}
+          {/* Left Column: Direct Pitch & Personal Contact Channels */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#66d9ed] block">
-                Initiate Contact
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#66d9ed] block">
+                Contact Us
               </span>
-              <h2 className="font-sans font-semibold text-3xl sm:text-5xl text-white tracking-tight leading-[1.1]">
+
+              <h2 className="font-sans font-semibold text-3xl sm:text-5xl text-white tracking-tight leading-[1.12]">
                 {t({
-                  en: "Available for select engineering opportunities.",
-                  id: "Terbuka untuk kolaborasi & rekayasa perangkat lunak.",
+                  en: "Let's work on what you care about!",
+                  id: "Mari bangun apa yang bernilai untuk Anda!",
                 })}
               </h2>
-              <p className="font-sans text-base text-[#86868b] leading-relaxed pt-2">
+
+              <p className="font-sans text-sm sm:text-base text-[#86868b] leading-relaxed pt-1">
                 {t({
-                  en: "Have an architectural challenge or an ambitious digital product to build? Reach out directly via email or message.",
-                  id: "Punya proyek ambisius atau tantangan arsitektur sistem? Hubungi saya langsung melalui email atau pesan singkat.",
+                  en: "Got a project in mind? From scalable web applications to intelligent AI systems, I'm ready to help. Let's turn your vision into reality.",
+                  id: "Punya rencana proyek? Dari aplikasi web terukur hingga sistem kecerdasan buatan, saya siap berkolaborasi mewujudkan ide Anda.",
                 })}
               </p>
             </div>
 
-            {/* Email Contact Link */}
-            <div className="pt-2">
+            {/* Direct Contact Links */}
+            <div className="space-y-4 pt-2">
+              {/* Email Row */}
+              <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
+                <div className="space-y-0.5">
+                  <span className="font-mono text-[11px] text-[#6e6e73] block uppercase tracking-wider">
+                    Direct Email
+                  </span>
+                  <a
+                    href={`mailto:${DATA.contact.email}`}
+                    className="font-mono text-sm sm:text-base text-white hover:text-[#66d9ed] transition-colors"
+                  >
+                    {DATA.contact.email}
+                  </a>
+                </div>
+                <button
+                  onClick={copyEmail}
+                  className="px-2.5 py-1 rounded bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] font-mono text-xs text-[#a1a1a6] hover:text-white transition-colors flex items-center gap-1.5"
+                  title="Copy email address"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="size-3 text-emerald-400" />
+                      <span className="text-emerald-400">Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="size-3" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* WhatsApp Row */}
+              <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
+                <div className="space-y-0.5">
+                  <span className="font-mono text-[11px] text-[#6e6e73] block uppercase tracking-wider">
+                    Instant Messaging
+                  </span>
+                  <span className="font-mono text-sm sm:text-base text-white">
+                    +62 857 4957 7424
+                  </span>
+                </div>
+                <a
+                  href={DATA.contact.social.whatsapp.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2.5 py-1 rounded bg-white/[0.04] border border-white/[0.08] hover:border-emerald-500/40 hover:text-emerald-400 font-mono text-xs text-[#a1a1a6] transition-colors flex items-center gap-1.5"
+                >
+                  <MessageCircle className="size-3" />
+                  <span>WhatsApp</span>
+                  <ArrowUpRight className="size-3" />
+                </a>
+              </div>
+
+              {/* Location & Timezone */}
+              <div className="flex items-center justify-between pt-1 font-mono text-xs text-[#6e6e73]">
+                <span>Surabaya / Jakarta, Indonesia</span>
+                <span>UTC+7 (WIB)</span>
+              </div>
+            </div>
+
+            {/* Social Links Minimalist Line */}
+            <div className="pt-4 flex items-center gap-5 font-mono text-xs text-[#86868b]">
               <a
-                href={`mailto:${DATA.contact.email}`}
-                className="font-mono text-xl sm:text-2xl text-white hover:text-[#66d9ed] transition-colors border-b border-white/20 hover:border-[#66d9ed] pb-1 inline-block"
+                href={DATA.contact.social.LinkedIn.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1"
               >
-                {DATA.contact.email}
+                <span>LinkedIn</span>
+                <ArrowUpRight className="size-3" />
+              </a>
+              <span>/</span>
+              <a
+                href={DATA.contact.social.GitHub.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1"
+              >
+                <span>GitHub</span>
+                <ArrowUpRight className="size-3" />
+              </a>
+              <span>/</span>
+              <a
+                href={DATA.contact.social.instagram.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1"
+              >
+                <span>Instagram</span>
+                <ArrowUpRight className="size-3" />
               </a>
             </div>
+          </div>
 
-            {/* Social channels list */}
-            <div className="space-y-4 pt-6 border-t border-white/[0.08]">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#6e6e73] block">
-                Networks & Channels
-              </span>
-              <div className="space-y-2.5 font-mono text-sm">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between text-[#a1a1a6] hover:text-white transition-colors group py-1.5"
+          {/* Right Column: Clean, Structured Inquiry Form (ZeeFrames / International Style) */}
+          <div className="lg:col-span-7 bg-[#0f0f12] border border-white/[0.08] rounded-2xl p-6 sm:p-9 shadow-2xl relative">
+            {formSubmitted ? (
+              <div className="py-12 text-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
+                  <Check className="size-6" />
+                </div>
+                <h3 className="font-sans font-semibold text-xl text-white">
+                  {t({
+                    en: "Message Prepared!",
+                    id: "Pesan Telah Disiapkan!",
+                  })}
+                </h3>
+                <p className="font-sans text-sm text-[#86868b] max-w-sm mx-auto leading-relaxed">
+                  {t({
+                    en: "Your email client has been launched with the details. I will review and reply within 24 hours.",
+                    id: "Aplikasi email Anda telah dibuka dengan detail pesan. Saya akan merespon dalam waktu 24 jam.",
+                  })}
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Full Name */}
+                  <div className="space-y-1.5">
+                    <label className="block font-mono text-xs text-[#a1a1aa]">
+                      {t({ en: "Full Name*", id: "Nama Lengkap*" })}
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder={t({ en: "e.g. Alex Morgan", id: "contoh: Afgan Galih" })}
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-black/40 border border-white/[0.1] text-white text-sm font-sans focus:outline-none focus:border-[#66d9ed] transition-colors placeholder:text-[#52525b]"
+                    />
+                  </div>
+
+                  {/* Email Address */}
+                  <div className="space-y-1.5">
+                    <label className="block font-mono text-xs text-[#a1a1aa]">
+                      {t({ en: "Email Address*", id: "Alamat Email*" })}
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder={t({ en: "alex@company.com", id: "nama@perusahaan.com" })}
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-black/40 border border-white/[0.1] text-white text-sm font-sans focus:outline-none focus:border-[#66d9ed] transition-colors placeholder:text-[#52525b]"
+                    />
+                  </div>
+                </div>
+
+                {/* Phone / WhatsApp */}
+                <div className="space-y-1.5">
+                  <label className="block font-mono text-xs text-[#a1a1aa]">
+                    {t({ en: "Phone Number / WhatsApp (Optional)", id: "Nomor Telepon / WhatsApp (Opsional)" })}
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="+62 8..."
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-black/40 border border-white/[0.1] text-white text-sm font-sans focus:outline-none focus:border-[#66d9ed] transition-colors placeholder:text-[#52525b]"
+                  />
+                </div>
+
+                {/* Message */}
+                <div className="space-y-1.5">
+                  <label className="block font-mono text-xs text-[#a1a1aa]">
+                    {t({
+                      en: "Message / Project Goals*",
+                      id: "Pesan / Kebutuhan Proyek*",
+                    })}
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder={t({
+                      en: "Tell me about your project, goals, timeline, or architecture requirements...",
+                      id: "Ceritakan tentang proyek, tujuan, estimasi waktu, atau kebutuhan teknis Anda...",
+                    })}
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-black/40 border border-white/[0.1] text-white text-sm font-sans focus:outline-none focus:border-[#66d9ed] transition-colors placeholder:text-[#52525b] resize-none"
+                  />
+                </div>
+
+                {/* Submit Action */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-[#e5e5e7] text-black font-sans font-medium text-sm transition-all shadow-lg hover:shadow-white/10 active:scale-[0.98] cursor-pointer"
                   >
-                    <span>{link.name}</span>
-                    <span className="text-xs text-[#6e6e73] group-hover:text-[#a1a1a6] transition-colors flex items-center gap-1 font-sans">
-                      {link.handle}
-                      <ArrowUpRight className="size-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
+                    <span>{t({ en: "Submit Inquiry", id: "Kirim Pesan" })}</span>
+                    <Send className="size-4" />
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
 
-          {/* Right Column: Clean Apple Bento Certification Cards */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            
-            {/* Card 1: AI Engineer */}
-            {cert1 && (
-              <div className="sm:col-span-2 rounded-2xl border border-white/[0.08] bg-[#141416] p-8 sm:p-10 text-white flex flex-col justify-between transition-all duration-300 hover:border-white/20 hover:bg-[#18181b]">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs text-[#66d9ed] uppercase tracking-wider">
-                      {cert1.organisasi} • {cert1.tahun}
-                    </span>
-                    <Award className="size-5 text-[#86868b]" />
-                  </div>
-
-                  <h3 className="font-sans font-semibold text-2xl text-white tracking-tight leading-snug">
-                    {cert1.nama}
-                  </h3>
-
-                  <p className="font-sans text-sm text-[#a1a1a6] leading-relaxed max-w-xl">
-                    {cert1.details || cert1.deskripsi}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {cert1.tools?.map((tool) => (
-                      <span
-                        key={tool}
-                        className="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] font-mono text-xs text-[#d1d1d6]"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {cert1.kredensi && (
-                  <div className="mt-8 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="font-mono text-xs text-[#6e6e73]">
-                      Verified Credential
-                    </span>
-                    <a
-                      href={cert1.kredensi}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-mono text-xs text-[#a1a1a6] hover:text-white transition-colors"
-                    >
-                      <span>Certificate</span>
-                      <ArrowUpRight className="size-3.5" />
-                    </a>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Card 2: Cloud Computing */}
-            {cert2 && (
-              <div className="rounded-2xl border border-white/[0.08] bg-[#141416] p-7 sm:p-8 text-white flex flex-col justify-between transition-all duration-300 hover:border-white/20 hover:bg-[#18181b]">
-                <div className="space-y-3">
-                  <span className="font-mono text-[11px] text-[#66d9ed] uppercase tracking-wider block">
-                    {cert2.organisasi} • {cert2.tahun}
-                  </span>
-                  <h4 className="font-sans font-semibold text-lg text-white leading-snug">
-                    {cert2.nama}
-                  </h4>
-                  <p className="font-sans text-xs sm:text-sm text-[#86868b] leading-relaxed">
-                    {cert2.deskripsi}
-                  </p>
-                </div>
-
-                {cert2.kredensi && (
-                  <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="font-mono text-[11px] text-[#6e6e73]">Cloud Architecture</span>
-                    <a
-                      href={cert2.kredensi}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-mono text-xs text-[#a1a1a6] hover:text-white transition-colors"
-                    >
-                      <span>View</span>
-                      <ArrowUpRight className="size-3" />
-                    </a>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Card 3: Data Science / Python */}
-            {cert3 && (
-              <div className="rounded-2xl border border-white/[0.08] bg-[#141416] p-7 sm:p-8 text-white flex flex-col justify-between transition-all duration-300 hover:border-white/20 hover:bg-[#18181b]">
-                <div className="space-y-3">
-                  <span className="font-mono text-[11px] text-[#66d9ed] uppercase tracking-wider block">
-                    {cert3.organisasi} • {cert3.tahun}
-                  </span>
-                  <h4 className="font-sans font-semibold text-lg text-white leading-snug">
-                    {cert3.nama}
-                  </h4>
-                  <p className="font-sans text-xs sm:text-sm text-[#86868b] leading-relaxed">
-                    {cert3.deskripsi}
-                  </p>
-                </div>
-
-                {cert3.kredensi && (
-                  <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="font-mono text-[11px] text-[#6e6e73]">Data Science</span>
-                    <a
-                      href={cert3.kredensi}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-mono text-xs text-[#a1a1a6] hover:text-white transition-colors"
-                    >
-                      <span>View</span>
-                      <ArrowUpRight className="size-3" />
-                    </a>
-                  </div>
-                )}
-              </div>
-            )}
-
-          </div>
         </div>
+
       </div>
     </section>
   );

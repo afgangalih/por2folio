@@ -131,11 +131,8 @@ export const Expertise = () => {
                   {/* Top Row: Index Tag & Sleek Micro-Icon */}
                   <div className="flex items-center justify-between pb-5 mb-5 border-b border-white/[0.06]">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-[#66d9ed]">
-                        {item.index}
-                      </span>
-                      <span className="font-mono text-[10px] text-white/40 tracking-wider uppercase">
-                        / {item.tag}
+                      <span className="font-mono text-[11px] font-semibold text-[#66d9ed] tracking-wider uppercase">
+                        {item.tag}
                       </span>
                     </div>
 

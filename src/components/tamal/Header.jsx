@@ -17,11 +17,12 @@ export const Header = () => {
   }, []);
 
   const navItems = [
-    { label: "Overview", index: "01", href: "#hero" },
-    { label: "Capabilities", index: "02", href: "#expertise" },
-    { label: "Work", index: "03", href: "#work" },
-    { label: "Experience", index: "04", href: "#experience" },
-    { label: "Contact", index: "05", href: "#contact" },
+    { label: "Overview", href: "#hero" },
+    { label: "Capabilities", href: "#expertise" },
+    { label: "Work", href: "#work" },
+    { label: "Experience", href: "#experience" },
+    { label: "Insights", href: "#insights" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (

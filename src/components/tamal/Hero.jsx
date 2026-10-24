@@ -10,7 +10,8 @@ export const Hero = () => {
   const heroRef = useRef(null);
   const bubbleRef = useRef(null);
   const starRef = useRef(null);
-  const glowRef = useRef(null);
+  const glowLeftRef = useRef(null);
+  const glowRightRef = useRef(null);
   const marqueeRef = useRef(null);       // tech stack scroll ribbon
   const marqueeTweenRef = useRef(null);  // store GSAP tween for hover pause/resume
 
@@ -77,29 +78,17 @@ export const Hero = () => {
     return () => clearTimeout(twTimer.current);
   }, [words]);
 
-  // GSAP: Buttery smooth 60/120fps mouse parallax, organic floating & seamless marquee
+  // GSAP: Buttery smooth 60/120fps mouse parallax & seamless marquee
   useEffect(() => {
     const heroEl = heroRef.current;
-    const bubbleEl = bubbleRef.current;
     const starEl = starRef.current;
-    const glowEl = glowRef.current;
+    const glowLeftEl = glowLeftRef.current;
+    const glowRightEl = glowRightRef.current;
     const marqueeEl = marqueeRef.current;
     if (!heroEl) return;
 
     const ctx = gsap.context(() => {
-      // 1. Organic floating animation for 3D glass bubble
-      if (bubbleEl) {
-        gsap.to(bubbleEl, {
-          y: -18,
-          x: 10,
-          rotation: 4,
-          scale: 1.04,
-          duration: 4.5,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
-      }
+      // 1. Bubble is kept completely stationary / static ("diem aja") as requested
 
       // 2. Gentle floating for electric cyan 4-point star
       if (starEl) {
@@ -123,38 +112,42 @@ export const Hero = () => {
         });
       }
 
-      // 4. Mouse Parallax (ZeeFrames Signature 3D Depth)
-      if (bubbleEl && starEl && glowEl) {
-        const bubbleX = gsap.quickTo(bubbleEl, "x", { duration: 1, ease: "power2.out" });
-        const bubbleY = gsap.quickTo(bubbleEl, "y", { duration: 1, ease: "power2.out" });
+      // 4. Mouse Parallax (Electric Cyan Accents & Star Depth, bubble stays completely still)
+      const starX = starEl ? gsap.quickTo(starEl, "x", { duration: 1.2, ease: "power2.out" }) : null;
+      const starY = starEl ? gsap.quickTo(starEl, "y", { duration: 1.2, ease: "power2.out" }) : null;
 
-        const starX = gsap.quickTo(starEl, "x", { duration: 1.2, ease: "power2.out" });
-        const starY = gsap.quickTo(starEl, "y", { duration: 1.2, ease: "power2.out" });
+      const glowLX = glowLeftEl ? gsap.quickTo(glowLeftEl, "x", { duration: 1.6, ease: "power2.out" }) : null;
+      const glowLY = glowLeftEl ? gsap.quickTo(glowLeftEl, "y", { duration: 1.6, ease: "power2.out" }) : null;
 
-        const glowX = gsap.quickTo(glowEl, "x", { duration: 1.5, ease: "power2.out" });
-        const glowY = gsap.quickTo(glowEl, "y", { duration: 1.5, ease: "power2.out" });
+      const glowRX = glowRightEl ? gsap.quickTo(glowRightEl, "x", { duration: 1.6, ease: "power2.out" }) : null;
+      const glowRY = glowRightEl ? gsap.quickTo(glowRightEl, "y", { duration: 1.6, ease: "power2.out" }) : null;
 
-        const handleMouseMove = (e) => {
-          const rect = heroEl.getBoundingClientRect();
-          const normX = (e.clientX - rect.left) / rect.width - 0.5;
-          const normY = (e.clientY - rect.top) / rect.height - 0.5;
+      const handleMouseMove = (e) => {
+        const rect = heroEl.getBoundingClientRect();
+        const normX = (e.clientX - rect.left) / rect.width - 0.5;
+        const normY = (e.clientY - rect.top) / rect.height - 0.5;
 
-          bubbleX(normX * 45);
-          bubbleY(normY * 35);
+        if (starX && starY) {
+          starX(-normX * 55);
+          starY(-normY * 40);
+        }
 
-          starX(-normX * 60);
-          starY(-normY * 45);
+        if (glowLX && glowLY) {
+          glowLX(normX * 45);
+          glowLY(normY * 35);
+        }
 
-          glowX(normX * 70);
-          glowY(normY * 50);
-        };
+        if (glowRX && glowRY) {
+          glowRX(-normX * 45);
+          glowRY(-normY * 35);
+        }
+      };
 
-        heroEl.addEventListener("mousemove", handleMouseMove);
+      heroEl.addEventListener("mousemove", handleMouseMove);
 
-        return () => {
-          heroEl.removeEventListener("mousemove", handleMouseMove);
-        };
-      }
+      return () => {
+        heroEl.removeEventListener("mousemove", handleMouseMove);
+      };
     }, heroRef);
 
     return () => ctx.revert();
@@ -193,19 +186,22 @@ export const Hero = () => {
       ref={heroRef}
       className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-32 pb-12 overflow-hidden bg-[#080808] text-white select-none"
     >
-      {/* 1. Volumetric Electric Cyan Glow (Signature Portfolio Tone) */}
+      {/* 1. Volumetric Electric Cyan Glow - Left Side */}
       <div
-        ref={glowRef}
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] h-[550px] pointer-events-none z-0 rounded-full blur-[170px] opacity-40 bg-[radial-gradient(circle,rgba(102,217,237,0.32)_0%,rgba(56,189,248,0.18)_35%,rgba(37,99,235,0.08)_65%,transparent_100%)]"
+        ref={glowLeftRef}
+        className="absolute top-1/3 -left-16 sm:-left-28 -translate-y-1/2 w-[520px] sm:w-[760px] h-[550px] sm:h-[750px] pointer-events-none z-0 rounded-full blur-[100px] sm:blur-[140px] opacity-55 bg-[radial-gradient(circle,rgba(102,217,237,0.45)_0%,rgba(56,189,248,0.22)_40%,rgba(37,99,235,0.06)_70%,transparent_100%)]"
       />
 
-      {/* 2. Secondary soft top cyan vignette */}
-      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(102,217,237,0.12),rgba(255,255,255,0))]" />
+      {/* 2. Volumetric Electric Cyan Glow - Right Side */}
+      <div
+        ref={glowRightRef}
+        className="absolute top-1/3 -right-16 sm:-right-28 -translate-y-1/2 w-[520px] sm:w-[760px] h-[550px] sm:h-[750px] pointer-events-none z-0 rounded-full blur-[100px] sm:blur-[140px] opacity-55 bg-[radial-gradient(circle,rgba(102,217,237,0.45)_0%,rgba(56,189,248,0.22)_40%,rgba(37,99,235,0.06)_70%,transparent_100%)]"
+      />
 
-      {/* 3. Floating 3D Fluid Glass Bubble with Cyan Specular Refraction */}
+      {/* 3. Static 3D Fluid Glass Bubble (Shifted slightly to the left, no movement) */}
       <div
         ref={bubbleRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[330px] sm:w-[480px] sm:h-[460px] pointer-events-none z-0 opacity-75"
+        className="absolute top-1/2 left-[36%] sm:left-[38%] -translate-x-1/2 -translate-y-1/2 w-[340px] h-[330px] sm:w-[480px] sm:h-[460px] pointer-events-none z-0 opacity-75"
         style={{
           borderRadius: "44% 56% 62% 38% / 48% 42% 58% 52%",
           background:
