@@ -12,8 +12,8 @@ export const DATA = {
     id: "Software Engineer & AI Enthusiast. Saya menjembatani estetika dan teknologi berperforma tinggi.",
   },
   summary: {
-    en: "I am a **passionate Software Engineer and AI Enthusiast** currently pursuing my degree in **Business Information Systems at Politeknik Negeri Malang**. With a unique background in **Design and Visual Communication**, I specialize in bridging the gap between **aesthetics and functionality**. I have extensive experience in building high-performance **web and mobile applications**, ranging from **expert systems** to **dynamic personal branding platforms**. My technical toolkit includes modern frameworks like **React, Next.js, and Laravel**, alongside a deep foundation in **Python** for data science and AI development.",
-    id: "Saya adalah **Software Engineer dan AI Enthusiast** yang sedang menempuh pendidikan **Sistem Informasi Bisnis di Politeknik Negeri Malang**. Dengan latar belakang unik di bidang **Desain Komunikasi Visual**, saya ahli dalam menghubungkan **estetika dan fungsionalitas**. Saya memiliki pengalaman luas dalam membangun **aplikasi web dan mobile** berperforma tinggi, mulai dari **sistem pakar** hingga **platform personal branding dinamis**. Toolkit teknis saya mencakup framework modern seperti **React, Next.js, dan Laravel**, serta fondasi kuat di **Python** untuk data science dan pengembangan AI.",
+    en: "I am a **Software Engineer and AI Enthusiast**, currently active as a **Software Engineer Intern at PT Naraya Telematika** and pursuing my degree in **Business Information Systems at Politeknik Negeri Malang**. With a unique background in **Design and Visual Communication**, I specialize in bridging the gap between **aesthetics and functionality**. I have extensive experience in building high-performance **web and mobile applications**, ranging from **expert systems** to **dynamic personal branding platforms**. My technical toolkit includes modern frameworks like **React, Next.js, and Laravel**, alongside a deep foundation in **Python** for data science and AI development.",
+    id: "Saya adalah **Software Engineer dan AI Enthusiast**, saat ini aktif sebagai **Software Engineer Intern di PT Naraya Telematika** serta menempuh pendidikan **Sistem Informasi Bisnis di Politeknik Negeri Malang**. Dengan latar belakang unik di bidang **Desain Komunikasi Visual**, saya ahli dalam menghubungkan **estetika dan fungsionalitas**. Saya memiliki pengalaman luas dalam membangun **aplikasi web dan mobile** berperforma tinggi, mulai dari **sistem pakar** hingga **platform personal branding dinamis**. Toolkit teknis saya mencakup framework modern seperti **React, Next.js, dan Laravel**, serta fondasi kuat di **Python** untuk data science dan pengembangan AI.",
   },
   avatarUrl: "/assets/afgan1.png",
   skills: [
@@ -64,6 +64,20 @@ export const DATA = {
   },
 
   work: [
+    {
+      company: "PT Naraya Telematika",
+      href: "https://narayatelematika.com",
+      badges: ["Internship", "Software Engineering", "Fullstack"],
+      location: "Malang, Indonesia",
+      title: "Software Engineer",
+      logoUrl: "/assets/proyek/1.png",
+      start: "2026",
+      end: null,
+      description: {
+        en: "Contributing as a Software Engineer Intern, engineering web applications, developing scalable frontend & backend features, optimizing system workflows, and collaborating on production-grade software solutions.",
+        id: "Berperan sebagai Software Engineer Intern, berkontribusi dalam rekayasa aplikasi web, pengembangan fitur terukur pada frontend & backend, optimasi alur sistem, dan kolaborasi solusi perangkat lunak skala produksi.",
+      },
+    },
     {
       company: "Freelance Web",
       href: "#",
